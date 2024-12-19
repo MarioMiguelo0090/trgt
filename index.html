@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feliz Navidad</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: linear-gradient(135deg, #003973, #e5e5be);
+            font-family: 'Arial', sans-serif;
+            color: #fff;
+            overflow: hidden;
+        }
+
+        .card {
+            text-align: center;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .card h1 {
+            font-size: 2.5em;
+            margin: 0 0 15px;
+        }
+
+        .card p {
+            font-size: 1.2em;
+            margin-bottom: 20px;
+        }
+
+        .button {
+            text-decoration: none;
+            background: #ff7e5f;
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 50px;
+            font-size: 1.1em;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: transform 0.2s;
+        }
+
+        .button:hover {
+            transform: scale(1.1);
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        .snow {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+        }
+
+        .snowflake {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background: #fff;
+            border-radius: 50%;
+            opacity: 0.8;
+            animation: fall 5s linear infinite, sway 3s ease-in-out infinite;
+        }
+
+        @keyframes fall {
+            0% {
+                top: -10%;
+                left: calc(100% * var(--x));
+            }
+            100% {
+                top: 110%;
+                left: calc(100% * var(--x));
+            }
+        }
+
+        @keyframes sway {
+            0%, 100% {
+                transform: translateX(0);
+            }
+            50% {
+                transform: translateX(15px);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <h1>🎄 ¡Feliz Navidad! 🎄</h1>
+        <p>Espero que esta Navidad esté llena de momentos especiales, sonrisas y felicidad. Este pequeño detalle es una muestra de cuánto te aprecio. 💖</p>
+        <a href="#" class="button">Haz clic para sonreír 😊</a>
+    </div>
+    <div class="snow">
+        <!-- Generar copos de nieve dinámicamente -->
+    </div>
+
+    <script>
+        // Crear copos de nieve
+        const snowContainer = document.querySelector('.snow');
+        for (let i = 0; i < 100; i++) {
+            const snowflake = document.createElement('div');
+            snowflake.classList.add('snowflake');
+            snowflake.style.setProperty('--x', Math.random());
+            snowflake.style.animationDuration = `${Math.random() * 3 + 2}s`;
+            snowflake.style.animationDelay = `${Math.random() * 5}s`;
+            snowContainer.appendChild(snowflake);
+        }
+
+        // Manejo del botón
+        document.querySelector('.button').addEventListener('click', (e) => {
+            e.preventDefault();
+            alert('¡Gracias por ser tan especial! 😊');
+        });
+    </script>
+</body>
+</html>
